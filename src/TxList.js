@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 export default function TxList({ txs }) {
     if (txs.length === 0) return null;
     return (
