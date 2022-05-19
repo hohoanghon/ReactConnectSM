@@ -97,15 +97,15 @@ export default function App() {
     const erc20 = new ethers.Contract(contractInfo.address, erc20abi, signer);
     await erc20.transfer(data.get("spender"), data.get("amountToApprove"));
   };
-  const handleApprove = async (i) => {
-    i.preventDefault();
-    const data = new FormData(i.target);
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = await provider.getSigner();
-    const erc20 = new ethers.Contract(address, erc20abi, signer);
-    await erc20.approve(data.get("recipient"), data.get("amount"));
-  }
+  // const handleApprove = async (i) => {
+  //   i.preventDefault();
+  //   const data = new FormData(i.target);
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //   await provider.send("eth_requestAccounts", []);
+  //   const signer = await provider.getSigner();
+  //   const erc20 = new ethers.Contract(address, erc20abi, signer);
+  //   await erc20.approve(data.get("recipient"), data.get("amount"));
+  // }
   const getInfoOwner = async () =>
   {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -213,37 +213,7 @@ export default function App() {
           </div>
         </form>
         <div className="m-4 credit-card w-full lg:w-3/4 sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
-          <div className="mt-4 p-4">
-            <h1 className="text-xl font-semibold text-gray-700 text-center">
-              Approve
-            </h1>
-            <form onSubmit={handleApprove}>
-              <div className="my-3">
-                <input
-                  type="text"
-                  name="spender"
-                  className="input input-bordered block w-full focus:ring focus:outline-none"
-                  placeholder="Spender address" style={{marginLeft: "25%",width:"50%"}}
-                />
-              </div>
-              <div className="my-3">
-                <input
-                  type="text"
-                  name="amountToApprove"
-                  className="input input-bordered block w-full focus:ring focus:outline-none"
-                  placeholder="Amount" style={{marginLeft: "25%",width:"50%"}}
-                />
-              </div>
-              <footer className="p-4">
-                <button
-                  type="submit"
-                  className="btn btn-primary submit-button focus:ring focus:outline-none w-full" style={{marginLeft: "25%",width:"50%"}}
-                >
-                  Approve
-                </button>
-              </footer>
-            </form>
-          </div> 
+          
           <div className="mt-4 p-4">
             <h1 className="text-xl font-semibold text-gray-700 text-center">
               Transfer
